@@ -2,6 +2,8 @@
 
 require_relative 'gravity_controller'
 
-controller = GravityController.new()
-controller.start_downloads()
+if __FILE__ == $0
+  controller = GravityController.new()
+  controller.start_downloads()
+end
 
