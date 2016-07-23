@@ -2,7 +2,7 @@
 
 class TemporaryFileDAO
   def initialize
-    @tmp_path = '../tmp/'
+    @tmp_path = 'tmp/'
     @seeds_path = @tmp_path + 'seeds/'
   end  
 
