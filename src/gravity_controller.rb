@@ -2,7 +2,7 @@
 
 class GravityController
 
-  def download_datas
+  def start_downloads
     puts 'Starting download...'
   end    
 
