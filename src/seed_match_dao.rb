@@ -13,13 +13,9 @@ class SeedMatchDAO
   end
 
   def save(seed_matches)
-    result = @collection.insert_one(seed_matches)
-
-    if result.n == 1
-      @log.info('Seed match insertion succeed') 
-    else
-      @log.error('An error occurred during a seed match insertion')
-    end
+    seed_matches.each_slice(50).to_a.each do |slice|
+      @collection.insert_many(slice)
+    end    
   end
 end
 

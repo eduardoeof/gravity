@@ -22,16 +22,9 @@ class GravityController
         matches_json = @seed_connector.fetch(file_name)
         @tmp_dao.save_seed_json(file_name=file_name, json=matches_json)
       end
-      
-      save_seed_matches_in_db(matches_json)
+     
+      @seed_dao.save(matches_json['matches'])
     end
   end 
-
-  private def save_seed_matches_in_db(matches_json)
-    matches_json['matches'].each do |match|
-      @seed_dao.save(match)
-      break
-    end
-  end   
 end
 
