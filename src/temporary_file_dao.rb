@@ -15,7 +15,7 @@ class TemporaryFileDAO
       file.write(json.to_json)
     end
     
-    @log.info("File " + file_name + "saved in temporary diretory.")
+    @log.info("File " + file_name + " saved in temporary diretory.")
   end
 end
 
