@@ -12,9 +12,11 @@ class GravityController
   def start_downloads
     for i in 1..10
       file_name = 'matches' + i.to_s + '.json'
-      matches_json = @seed_connector.fetch(file_name)
 
-      @tmp_dao.save_seed_json(file_name=file_name, json=matches_json)
+      if !@tmp_dao.is_seed_file_exist(file_name)
+        matches_json = @seed_connector.fetch(file_name)
+        @tmp_dao.save_seed_json(file_name=file_name, json=matches_json)
+      end
     end
   end    
 end
