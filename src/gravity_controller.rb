@@ -1,12 +1,14 @@
 #!/usr/bin/env ruby
 
 require_relative 'lol_seed_data_connector'
+require_relative 'seed_match_dao'
 require_relative 'temporary_file_dao'
 
 class GravityController
   def initialize
     @seed_connector = LoLSeedDataConnector.new 
     @tmp_dao = TemporaryFileDAO.new 
+    @seed_dao = SeedMatchDAO.new 
   end
 
   def start_downloads
@@ -20,15 +22,14 @@ class GravityController
         matches_json = @seed_connector.fetch(file_name)
         @tmp_dao.save_seed_json(file_name=file_name, json=matches_json)
       end
-
+      
       save_seed_matches_in_db(matches_json)
     end
   end 
 
   private def save_seed_matches_in_db(matches_json)
-    puts 'File match:'
     matches_json['matches'].each do |match|
-      puts match.to_s
+      @seed_dao.save(match)
       break
     end
   end   
