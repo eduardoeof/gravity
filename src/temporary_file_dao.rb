@@ -10,6 +10,10 @@ class TemporaryFileDAO
     @log.level = Logger::INFO
   end  
 
+  def is_seed_file_exist(file_name)
+    return File.file?(@seeds_path + file_name)
+  end
+
   def save_seed_json(file_name, json)
     File.open(@seeds_path + file_name, 'w') do |file|
       file.write(json.to_json)
