@@ -6,6 +6,9 @@ class TemporaryFileDAO
   def initialize
     @tmp_path = 'tmp/'
     @seeds_path = @tmp_path + 'seeds/'
+
+    create_dirs()
+
     @log = Logger.new(STDOUT)
     @log.level = Logger::INFO
   end  
@@ -20,6 +23,11 @@ class TemporaryFileDAO
     end
     
     @log.info("File " + file_name + " saved in temporary diretory.")
+  end
+
+  private def create_dirs()
+    Dir.mkdir(@tmp_path) unless File.exists?(@tmp_path)
+    Dir.mkdir(@seeds_path) unless File.exists?(@seeds_path)
   end
 end
 
