@@ -19,8 +19,12 @@ class LoLSeedDataConnector
     response = Net::HTTP.get(uri)
     
     @log.info("Download " + file_name + " succeed")
-   
-    return JSON.parse(response)    
+
+    return JSON.parse(convert_to_utf8(response))    
+  end
+
+  def convert_to_utf8(response)
+    return response.force_encoding("iso-8859-1").encode("utf-8")  
   end
 end
 
