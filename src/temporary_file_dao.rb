@@ -25,6 +25,13 @@ class TemporaryFileDAO
     @log.info("File " + file_name + " saved in temporary diretory.")
   end
 
+  def load_seed_file(file_name)
+    @log.info("Load file " + file_name + " from temporary diretory.")
+    
+    file = File.read(@seeds_path + file_name)  
+    return JSON.parse(file)
+  end
+
   private def create_dirs()
     Dir.mkdir(@tmp_path) unless File.exists?(@tmp_path)
     Dir.mkdir(@seeds_path) unless File.exists?(@seeds_path)
