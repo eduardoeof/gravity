@@ -8,7 +8,7 @@ class TemporaryFileDAO
   def initialize
     @tmp_path = 'tmp/'
     @seeds_path = @tmp_path + 'seeds/'
-    @log = GLogger.new(TemporaryFileDAO.class)
+    @log = GLogger.new(TemporaryFileDAO)
 
     create_dirs()
   end  
