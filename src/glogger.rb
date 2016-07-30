@@ -3,10 +3,8 @@
 require 'logger'
 
 class GLogger
-  def initialize(owner_class=nil)
-    if !owner_class.nil?
-      @owner_class_name = owner_class.name
-    end    
+  def initialize(owner_class)
+    @owner_class_name = owner_class.name
 
     @log_path = 'log/'
     create_dir(@log_path)
