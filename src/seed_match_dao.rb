@@ -14,6 +14,8 @@ class SeedMatchDAO
   end
 
   def save(seed_matches)
+    @log.info("Save #{seed_matches.count} matches in database")
+
     seed_matches.each_slice(50).to_a.each do |slice|
       @collection.insert_many(slice)
     end    
