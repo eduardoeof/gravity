@@ -15,6 +15,7 @@ class GLogger
 
     @loggers = [logger_file, logger_stdout]
     define_loggers_level()
+    define_loggers_progname()
   end
 
   def info(message)
@@ -30,11 +31,15 @@ class GLogger
   end
 
   private def define_loggers_level
-    if @loggers.nil? 
-      @loggers.each do |logger|
-        logger.level = Logger::INFO
-      end
+    @loggers.each do |logger|
+      logger.level = Logger::INFO
     end
+  end
+
+  private def define_loggers_progname 
+    @loggers.each do |logger|
+      logger.progname = @owner_class_name
+     end
   end
 
   private def create_dir(dir_path)
