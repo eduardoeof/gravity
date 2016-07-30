@@ -18,11 +18,11 @@ class TemporaryFileDAO
   end
 
   def save_seed_json(file_name, json)
+    @log.info("Save file " + file_name + " in temporary diretory.")
+    
     File.open(@seeds_path + file_name, 'w') do |file|
       file.write(json.to_json)
     end
-    
-    @log.info("File " + file_name + " saved in temporary diretory.")
   end
 
   def load_seed_file(file_name)
