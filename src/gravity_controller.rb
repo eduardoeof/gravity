@@ -9,9 +9,12 @@ class GravityController
     @seed_connector = LoLSeedDataConnector.new 
     @tmp_dao = TemporaryFileDAO.new 
     @seed_dao = SeedMatchDAO.new 
+    @log = GLogger.new(GravityController)
   end
 
   def start_downloads
+    @log.info("Gravity start running!")
+
     for i in 1..10
       file_name = 'matches' + i.to_s + '.json'
 
@@ -25,6 +28,8 @@ class GravityController
      
       @seed_dao.save(matches_json['matches'])
     end
+    
+    @log.info("Gravity finished its job. That\'s all folks!")
   end 
 end
 
