@@ -3,9 +3,11 @@
 require 'logger'
 
 class GLogger
-  def initialize(owner_class)
-    @owner_class_name = owner_class.name
-    
+  def initialize(owner_class=nil)
+    if !owner_class.nil?
+      @owner_class_name = owner_class.name
+    end    
+
     log_file = 'gravity_log.txt'
     logger_file = Logger.new(log_file)
     logger_stdout = Logger.new(STDOUT)
