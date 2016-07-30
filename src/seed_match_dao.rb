@@ -7,7 +7,9 @@ require_relative 'glogger'
 
 class SeedMatchDAO
   def initialize
-    client = Mongo::Client.new(['127.0.0.1:27017'], :database => 'lol_dirty_data')
+    change_mongo_logger_level() 
+    
+    client = create_mongo_client()
     @collection = client[:seed_match]
     
     @log = GLogger.new(SeedMatchDAO.class)
@@ -19,6 +21,14 @@ class SeedMatchDAO
     seed_matches.each_slice(50).to_a.each do |slice|
       @collection.insert_many(slice)
     end    
+  end
+
+  private def create_mongo_client
+    return Mongo::Client.new(['127.0.0.1:27017'], :database => 'lol_dirty_data')
+  end
+
+  private def change_mongo_logger_level
+    Mongo::Logger.logger.level = ::Logger::ERROR
   end
 end
 
