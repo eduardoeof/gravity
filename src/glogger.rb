@@ -11,7 +11,7 @@ class GLogger
     @log_path = 'log/'
     create_dir(@log_path)
 
-    log_file = 'gravity_log.txt'
+    log_file = 'gravity_log_' + fetch_date_today() + '.txt'
     logger_file = Logger.new(@log_path + log_file)
     logger_stdout = Logger.new(STDOUT)
 
@@ -41,6 +41,10 @@ class GLogger
 
   private def create_dir(dir_path)
     Dir.mkdir(dir_path) unless File.exists?(dir_path)
+  end
+
+  private def fetch_date_today
+    return Time.new.strftime("%Y%m%d")
   end
 end
 
