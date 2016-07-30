@@ -2,15 +2,15 @@
 
 require 'logger'
 
+require_relative 'glogger'
+
 class TemporaryFileDAO
   def initialize
     @tmp_path = 'tmp/'
     @seeds_path = @tmp_path + 'seeds/'
+    @log = GLogger.new(TemporaryFileDAO.class)
 
     create_dirs()
-
-    @log = Logger.new(STDOUT)
-    @log.level = Logger::INFO
   end  
 
   def is_seed_file_exist(file_name)
