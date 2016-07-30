@@ -12,7 +12,7 @@ class SeedMatchDAO
     client = create_mongo_client()
     @collection = client[:seed_match]
     
-    @log = GLogger.new(SeedMatchDAO.class)
+    @log = GLogger.new(SeedMatchDAO)
   end
 
   def save(seed_matches)
