@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'fileutils'
 require 'logger'
 
 require_relative 'glogger'
@@ -30,6 +31,12 @@ class TemporaryFileDAO
     
     file = File.read(@seeds_path + file_name)  
     return JSON.parse(file)
+  end
+
+  def delete_seed_files
+    @log.info("Delete all seed files in tmp dir")
+    
+    FileUtils.rm_rf(@seeds_path)
   end
 
   private def create_dirs()
