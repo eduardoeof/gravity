@@ -28,7 +28,9 @@ class GravityController
      
       @seed_dao.save(matches_json['matches'])
     end
-    
+
+    @tmp_dao.delete_seed_files()    
+ 
     @log.info("Gravity finished its job. That\'s all folks!")
   end 
 end
