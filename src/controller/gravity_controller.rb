@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require_relative 'lol_seed_data_connector'
-require_relative 'seed_match_dao'
-require_relative 'temporary_file_dao'
+#require_relative 'lol_seed_data_connector'
+#require_relative 'seed_match_dao'
+#require_relative 'temporary_file_dao'
 
 class GravityController
   def initialize

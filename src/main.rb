@@ -1,8 +1,13 @@
 #!/usr/bin/env ruby
 
-require_relative 'glogger'
+$LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require_relative 'gravity_controller'
+require 'controller/gravity_controller'
+
+require 'lol_seed_data_connector'
+require 'glogger'
+require 'seed_match_dao'
+require 'temporary_file_dao'
 
 if __FILE__ == $0
   controller = GravityController.new()
