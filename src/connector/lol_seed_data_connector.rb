@@ -3,8 +3,6 @@
 require 'json'
 require 'net/http'
 
-require_relative 'glogger'
-
 class LoLSeedDataConnector
   def initialize()
     @url = 'https://s3-us-west-1.amazonaws.com/riot-api/seed_data/'

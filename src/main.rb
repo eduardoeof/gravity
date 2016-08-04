@@ -3,8 +3,7 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'controller/gravity_controller'
-
-require 'lol_seed_data_connector'
+require 'connector/lol_seed_data_connector'
 require 'glogger'
 require 'seed_match_dao'
 require 'temporary_file_dao'
