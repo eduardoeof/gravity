@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'logger'
 require 'mongo'
-
-require_relative 'glogger'
 
 class SeedMatchDAO
   def initialize

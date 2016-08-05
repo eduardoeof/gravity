@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'fileutils'
-require 'logger'
-
-require_relative 'glogger'
 
 class TemporaryFileDAO
   def initialize
