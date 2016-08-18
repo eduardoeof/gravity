@@ -26,9 +26,9 @@ Install MongoDB:
   - [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
   - [Windows](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-Install [Bundler](http://bundler.io/)
+Then install [Bundler](http://bundler.io/)
 
-Clone Gravity:
+Now you can clone Gravity:
 ```
 git clone https://github.com/jademcosta/gravity.git
 ```
