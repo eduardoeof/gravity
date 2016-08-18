@@ -37,3 +37,14 @@ On Gravity's dir, install gems:
 ```
 bundle install
 ```
+
+## Run bitch, run!
+On terminal, run MongoDB:
+```
+mongod
+```
+
+Then go to Gravity's dir and execute:
+```
+./gravity
+```
