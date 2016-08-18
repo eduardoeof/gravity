@@ -33,7 +33,7 @@ Now you can clone Gravity:
 git clone https://github.com/jademcosta/gravity.git
 ```
 
-On Gravity dir, install gems:
+On Gravity's dir, install gems:
 ```
 bundle install
 ```
