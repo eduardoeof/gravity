@@ -19,3 +19,21 @@ Our other database is _lol_clean_data_, where the diamonds are placed.
 All data treated by our applications (like **precog**) should be stored in it. The applications should load datas from _lol_dirty_data_ or others integration, compile them and store in _lol_clean_data_. 
 
 Gravity will not insert data in _lol_clean_data_.
+
+## Installation
+Install MongoDB:
+  - [Mac](https://docs.mongodb.com/manual/installation/)
+  - [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
+  - [Windows](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+Install [Bundler](http://bundler.io/)
+
+Clone Gravity:
+```
+git clone https://github.com/jademcosta/gravity.git
+```
+
+On Gravity dir, install gems:
+```
+bundle install
+```
