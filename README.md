@@ -58,3 +58,12 @@ Then go to Gravity's dir and execute:
 ```
 ./gravity
 ```
+
+After that, Gravity will load recent games of all summoners stored in collection `summoner` in `lol_clean_data`. Also can be used arguments to load a specific data:
+  - `-g` or `--game`: load just recent games.
+  - `-s` or `--seed`: load just seed files.
+  - `-a` or `--all`: load recent games and seed files.
+
+ ```
+./gravity -g
+ ```
