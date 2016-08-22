@@ -54,12 +54,35 @@ On terminal, run MongoDB:
 mongod
 ```
 
+Gravity needs summonerIds to load recent games. For this, create file `create_summoners.js` with:
+```
+db = db.getSiblingDB('lol_clean_data')
+db.summoner.insertMany(
+  [
+    { name: "LEP",      summonerId: "1634366"  },
+    { name: "Minerva",  summonerId: "9480188"  },
+    { name: "tinowns",  summonerId: "20410406" },
+    { name: "pbo",      summonerId: "15723636" },
+    { name: "wOs",      summonerId: "761032"   },
+    { name: "Yang",     summonerId: "488056"   },
+    { name: "Revolta",  summonerId: "1876119"  },
+    { name: "Tockers",  summonerId: "21894688" },
+    { name: "micao",    summonerId: "16404993" },
+    { name: "Jockster", summonerId: "22594355" }
+  ]
+)
+```
+Then execute the file from mongo shell client:
+```
+mongo create_summoners.js
+```
+
 Then go to Gravity's dir and execute:
 ```
 ./gravity
 ```
 
-After that, Gravity will load recent games of all summoners stored in collection `summoner` in `lol_clean_data`. Also can be used arguments to load a specific data:
+Also can be used arguments to load specific datas:
   - `-g` or `--game`: load just recent games.
   - `-s` or `--seed`: load just seed files.
   - `-a` or `--all`: load recent games and seed files.
