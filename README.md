@@ -87,9 +87,9 @@ Also can be used arguments to load specific datas:
   - `-s` or `--seed`: load just seed files.
   - `-a` or `--all`: load recent games and seed files.
 
- ```
+```
 ./gravity -g
- ```
+```
 
 ## Finally, don't forget
 Eat your vegetables.
