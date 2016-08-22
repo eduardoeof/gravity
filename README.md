@@ -20,6 +20,16 @@ All data treated by our applications (like **precog**) should be stored in it. T
 
 Gravity will not insert data in _lol_clean_data_.
 
+## Data types
+
+Nowadays Gravity load two data types: seed files and recent games.
+
+#### Seed files
+Seed files are a compilation of aleatory matches that LoL team offers to new developers. It's the easiest way to understand the data's struct. Those files are updated every 3 months or when data's struct is modified. Seed files are stored in collection `seed_match`.
+
+#### Recent games
+Recent games came from a LoL API's service ([game endpoint](https://developer.riotgames.com/api/methods#!/1078/3718)) that returns the last 10 games played from a summoner. Recent gmaes are stored in collection `recent_game`.
+
 ## Installation
 Install MongoDB:
   - [Mac](https://docs.mongodb.com/manual/installation/)
