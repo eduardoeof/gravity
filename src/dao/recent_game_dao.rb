@@ -25,9 +25,8 @@ class RecentGameDAO
   end
 
   def save(games, summoner_id)
-    if !(is_games_valid(games) && is_summoner_id_valid(summoner_id))
-      return
-    end
+    raise ArgumentError, 'Parameter games is nil or empty' unless !games.nil? && !games.empty?
+    raise ArgumentError, 'Parameter summoner_id is nil' unless !summoner_id.nil?
   
     @log.info("Save #{games.count} games of summoner #{summoner_id}")
 
@@ -50,33 +49,6 @@ class RecentGameDAO
     games.each do |game|
       game['ownerSummonerId'] = summoner_id
     end
-  end
-
-  private def is_game_valid(game)
-    if game.nil?
-      @log.error('Game is nil')
-      return false
-    end
-
-    return true
-  end
-
-  private def is_games_valid(games)
-    if games.nil? || games.count == 0
-      @log.error('Games is nil or doesn\'t have games')
-      return false
-    end
-
-    return true
-  end
-  
-  private def is_summoner_id_valid(summoner_id)
-    if summoner_id.nil?
-      @log.error('Summoner_id is nil')
-      return false
-    end
-
-    return true
   end
 end
 
