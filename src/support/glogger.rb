@@ -30,6 +30,12 @@ class GLogger
     end
   end
 
+  def warn(message)
+    @loggers.each do |logger|
+      logger.warn(message)
+    end
+  end
+
   private def define_loggers_level
     @loggers.each do |logger|
       logger.level = Logger::INFO
