@@ -14,7 +14,7 @@ class RecentGameDAO
 
   def exists?(game, summoner_id)
     raise ArgumentError, 'Parameter game is nil' unless !game.nil?
-    raise ArgumentError, 'Parameter game is nil' unless !summoner_id.nil?
+    raise ArgumentError, 'Parameter summoner_id is nil' unless !summoner_id.nil?
 
     game_id = game["gameId"]
     query_result = @collection.find({"gameId": game_id, "ownerSummonerId": summoner_id}, {"_id": 1})
