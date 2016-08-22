@@ -8,7 +8,7 @@ class LoLRecentGameConnector
     @log = GLogger.new(LoLRecentGameConnector)
   end
 
-  def fetch(summoner_id)
+  def fetch_games(summoner_id)
     @log.info('Start recent games request of summonerId ' + summoner_id)
 
     url = create_url(summoner_id)
