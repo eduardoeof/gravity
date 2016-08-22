@@ -13,6 +13,20 @@ require 'dao/recent_game_dao'
 
 if __FILE__ == $0
   controller = GravityController.new()
-  controller.load_recent_games()
+  
+  if ARGV.empty?
+    controller.load_recent_games()
+  else
+    ARGV.each do |arg|
+      if arg == '-s' || arg == '--seed'
+        controller.load_seed_data()
+      elsif arg == '-g' || arg == '--game'
+        controller.load_recent_games()
+      elsif arg == '-a' || arg == '--all'
+        controller.load_seed_data()
+        controller.load_recent_games()
+      end
+    end
+  end
 end
 
