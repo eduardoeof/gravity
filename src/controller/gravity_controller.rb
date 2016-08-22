@@ -33,7 +33,7 @@ class GravityController
     end 
   end
 
-  def start_downloads
+  def load_seed_data 
     @log.info("Gravity start running!")
 
     for i in 1..10
