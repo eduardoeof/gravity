@@ -2,13 +2,38 @@
 
 class GravityController
   def initialize
+    @game_connector = LoLRecentGameConnector.new 
     @seed_connector = LoLSeedDataConnector.new 
+    
     @tmp_dao = TemporaryFileDAO.new 
-    @seed_dao = SeedMatchDAO.new 
+    @seed_dao = SeedMatchDAO.new
+    @summoner_dao = SummonerDAO.new 
+    @game_dao = RecentGameDAO.new
+    
     @log = GLogger.new(GravityController)
   end
 
-  def start_downloads
+  def load_recent_games
+    @summoner_dao.load_summoner_ids().each do |summoner_id|
+      games = @game_connector.fetch_games(summoner_id)
+
+      if games.nil?
+        @log.error("Games of summoner #{summoner_id} is nil ")
+        next
+      end
+
+      new_games = search_new_games(games, summoner_id) 
+
+      if new_games.empty?
+        @log.warn("Summoner #{summoner_id} doesn't have new games")
+        next
+      end
+
+      @game_dao.save(new_games, summoner_id) 
+    end 
+  end
+
+  def load_seed_data 
     @log.info("Gravity start running!")
 
     for i in 1..10
@@ -29,5 +54,18 @@ class GravityController
  
     @log.info("Gravity finished its job. That\'s all folks!")
   end 
+  
+  # Private
+
+  private def search_new_games(games, summoner_id)
+    new_games = []
+    games.each do |game|
+      if !@game_dao.exists?(game, summoner_id)
+        new_games << game
+      end
+    end
+
+    return new_games
+  end
 end
 

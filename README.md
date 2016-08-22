@@ -20,6 +20,16 @@ All data treated by our applications (like **precog**) should be stored in it. T
 
 Gravity will not insert data in _lol_clean_data_.
 
+## Data types
+
+Nowadays Gravity load two data types: seed files and recent games.
+
+#### Seed files
+Seed files are a compilation of aleatory matches that LoL team offers to new developers. It's the easiest way to understand the data's struct. Those files are updated every 3 months or when data's struct is modified. Seed files are stored in collection `seed_match`.
+
+#### Recent games
+Recent games came from a LoL API's service ([game endpoint](https://developer.riotgames.com/api/methods#!/1078/3718)) that returns the last 10 games played from a summoner. Recent gmaes are stored in collection `recent_game`.
+
 ## Installation
 Install MongoDB:
   - [Mac](https://docs.mongodb.com/manual/installation/)
@@ -44,7 +54,42 @@ On terminal, run MongoDB:
 mongod
 ```
 
+Gravity needs summonerIds to load recent games. For this, create file `create_summoners.js` with:
+```
+db = db.getSiblingDB('lol_clean_data')
+db.summoner.insertMany(
+  [
+    { name: "LEP",      summonerId: "1634366"  },
+    { name: "Minerva",  summonerId: "9480188"  },
+    { name: "tinowns",  summonerId: "20410406" },
+    { name: "pbo",      summonerId: "15723636" },
+    { name: "wOs",      summonerId: "761032"   },
+    { name: "Yang",     summonerId: "488056"   },
+    { name: "Revolta",  summonerId: "1876119"  },
+    { name: "Tockers",  summonerId: "21894688" },
+    { name: "micao",    summonerId: "16404993" },
+    { name: "Jockster", summonerId: "22594355" }
+  ]
+)
+```
+Then execute the file from mongo shell client:
+```
+mongo create_summoners.js
+```
+
 Then go to Gravity's dir and execute:
 ```
 ./gravity
 ```
+
+Also can be used arguments to load specific datas:
+  - `-g` or `--game`: load just recent games.
+  - `-s` or `--seed`: load just seed files.
+  - `-a` or `--all`: load recent games and seed files.
+
+```
+./gravity -g
+```
+
+## Finally, don't forget
+Eat your vegetables.
