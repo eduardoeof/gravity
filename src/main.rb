@@ -11,6 +11,8 @@ require 'dao/temporary_file_dao'
 require 'dao/summoner_dao'
 require 'dao/recent_game_dao'
 
+require_relative '../conf/configuration'
+
 if __FILE__ == $0
   controller = GravityController.new()
   
