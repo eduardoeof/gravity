@@ -14,6 +14,8 @@ class GravityController
   end
 
   def load_recent_games
+    @log.info("Gravity start loading recent games data!")
+    
     @summoner_dao.load_summoner_ids().each do |summoner_id|
       games = @game_connector.fetch_games(summoner_id)
 
@@ -31,10 +33,12 @@ class GravityController
 
       @game_dao.save(new_games, summoner_id) 
     end 
+    
+    @log.info("Gravity finished recent games load. That\'s all folks!")
   end
 
   def load_seed_data 
-    @log.info("Gravity start running!")
+    @log.info("Gravity start loading seed data!")
 
     for i in 1..10
       file_name = 'matches' + i.to_s + '.json'
@@ -52,7 +56,7 @@ class GravityController
 
     @tmp_dao.delete_seed_files()    
  
-    @log.info("Gravity finished its job. That\'s all folks!")
+    @log.info("Gravity finished seed data load. That\'s all folks!")
   end 
   
   # Private
