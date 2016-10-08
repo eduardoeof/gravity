@@ -6,7 +6,7 @@ class GLogger
   def initialize(owner_class)
     @owner_class_name = owner_class.name
 
-    @log_path = 'log/'
+    @log_path = Configuration.log_dir_path
     create_dir(@log_path)
 
     log_file = 'gravity_log_' + fetch_date_today() + '.txt'

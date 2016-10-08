@@ -4,7 +4,7 @@ require 'fileutils'
 
 class TemporaryFileDAO
   def initialize
-    @tmp_path = 'tmp/'
+    @tmp_path = Configuration.tmp_dir_path
     @seeds_path = @tmp_path + 'seeds/'
     @log = GLogger.new(TemporaryFileDAO)
 
