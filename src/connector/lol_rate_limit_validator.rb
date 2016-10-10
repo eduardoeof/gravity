@@ -22,7 +22,11 @@ class LoLRateLimitValidator
     requests_interval = @requests_timestamp.last - @requests_timestamp.first
     
     if requests_interval < 1.0
-      sleep(1.0 - requests_interval)
+      period = 1.0 - requests_interval 
+      
+      @log.warn('Process will sleep ' + period.to_s + ' seconds to restore rate limit')
+      
+      sleep(period)
     end
     
     erase_requests_timestamp()
