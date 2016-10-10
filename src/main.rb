@@ -5,6 +5,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'controller/gravity_controller'
 require 'connector/lol_recent_game_connector'
 require 'connector/lol_seed_data_connector'
+require 'connector/lol_rate_limit_validator'
 require 'support/glogger'
 require 'dao/seed_match_dao'
 require 'dao/temporary_file_dao'
