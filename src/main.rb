@@ -2,15 +2,15 @@
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require 'controller/gravity_controller'
 require 'connector/lol_recent_game_connector'
 require 'connector/lol_seed_data_connector'
-require 'connector/lol_rate_limit_validator'
-require 'support/glogger'
+require 'controller/gravity_controller'
 require 'dao/seed_match_dao'
 require 'dao/temporary_file_dao'
 require 'dao/summoner_dao'
 require 'dao/recent_game_dao'
+require 'support/glogger'
+require 'support/lol_rate_limit_gateway'
 
 require_relative '../conf/configuration'
 
