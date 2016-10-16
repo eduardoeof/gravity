@@ -5,22 +5,16 @@ require 'net/http'
 
 class LoLRecentGameConnector
   def initialize
-    @rate_limit_validator = LoLRateLimitValidator.new
+    @gateway = LoLRateLimitGateway.new
     @log = GLogger.new(LoLRecentGameConnector)
   end
 
   def fetch_games(summoner_id)
     @log.info('Start recent games request of summonerId ' + summoner_id)
 
-    if !@rate_limit_validator.should_send_request()
-      @rate_limit_validator.wait_until_rate_limit_permits()
-    end
-
     url = create_url(summoner_id)
     uri = URI(url)
-    response = Net::HTTP.get(uri)
-
-    @rate_limit_validator.register_request()
+    response = @gateway.get(uri)
 
     @log.info('Recent games request of summonerId ' + summoner_id + ' succeed')
 
