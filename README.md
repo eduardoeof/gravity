@@ -40,7 +40,7 @@ Then install [Bundler](http://bundler.io/)
 
 Now you can clone Gravity:
 ```
-git clone https://github.com/jademcosta/gravity.git
+git clone https://github.com/eduardoeof/gravity.git
 ```
 
 On Gravity's dir, install gems:
