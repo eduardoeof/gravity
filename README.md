@@ -1,6 +1,6 @@
 # Gravity
 
-Gravity is the project responsible for get data from LoL API and store them in our database.
+Gravity is the project responsible for get data from LoL API and store them in NoSQL database. This project was a part of a bigger one that I was participating with some friends :)
 
 ![gravity_diagram](img/gravity_diagram.png)
 
@@ -16,7 +16,7 @@ Gravity is like a miner: it just insert data in _lol_dirty_data_. It collects st
 #### Clean data
 Our other database is _lol_clean_data_, where the diamonds are placed. 
 
-All data treated by our applications (like **precog**) should be stored in it. The applications should load datas from _lol_dirty_data_ or others integration, compile them and store in _lol_clean_data_. 
+All data treated by our applications should be stored in it. The applications should load datas from _lol_dirty_data_ or others integration, compile them and store in _lol_clean_data_. 
 
 Gravity will not insert data in _lol_clean_data_.
 
